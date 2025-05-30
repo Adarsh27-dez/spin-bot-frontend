@@ -1,4 +1,3 @@
-
 document.getElementById("spinBtn").addEventListener("click", async function () {
   const userId = "user123";  // Replace with dynamic user if needed
   const res = await fetch("https://script.google.com/macros/s/AKfycbwk4CzlKt9vi2B7XHvUUPYrYm0eIK10bN4R3UifLWIBnR_CNovl6SxzdooeiIc0zeBv/exec", {
