@@ -1,0 +1,35 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  color: white;
+}
+
+.container {
+  margin-top: 50px;
+}
+
+.wheel {
+  margin: 20px auto;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: conic-gradient(
+    #f39c12 0% 25%,
+    #e74c3c 25% 50%,
+    #2ecc71 50% 75%,
+    #3498db 75% 100%
+  );
+  border: 5px solid white;
+  transition: transform 3s ease-out;
+}
+
+button {
+  padding: 12px 24px;
+  font-size: 18px;
+  background-color: #fff;
+  color: #333;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
