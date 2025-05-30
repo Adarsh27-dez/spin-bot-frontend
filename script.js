@@ -1,12 +1,27 @@
-document.getElementById("spinBtn").addEventListener("click", async function () {
-  const userId = "user123";  // Replace with dynamic user if needed
-  const res = await fetch("https://script.google.com/macros/s/AKfycbwk4CzlKt9vi2B7XHvUUPYrYm0eIK10bN4R3UifLWIBnR_CNovl6SxzdooeiIc0zeBv/exec", {
-    method: "POST",
-    body: JSON.stringify({ userId: userId }),
-    headers: { "Content-Type": "application/json" },
-  });
+const API_URL = "https://script.google.com/macros/s/AKfycbzxMzk8k-ZwTpXTpI00CtAln9p4Vi5bUGTbu-fR4jpufISE7Mi83V9SZ91NnYb_5qLh/exec"; // <-- Replace this with your actual Web App URL
 
-  const data = await res.json();
-  const coins = data.coins;
-  document.getElementById("balance").innerText = 🔥 Balance: ${coins} coins;
-});
+async function spinWheel(userId, username) {
+  try {
+    const res = await fetch(API_URL, {
+      method: "POST",
+      body: JSON.stringify({ userId, username }),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+
+    const data = await res.json();
+
+    if (data.status === "wait") {
+      alert(⏳ You can spin again in ${data.hoursLeft} hour(s)!);
+    } else if (data.status === "success") {
+      alert(🎉 You won ${data.reward} coins! Your new balance is ${data.balance} coins.);
+      document.getElementById("balance").innerText = data.balance;
+    } else {
+      alert("Something went wrong!");
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    alert("Network or server issue occurred.");
+  }
+}
